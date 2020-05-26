@@ -20,6 +20,7 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include "Vector2.h"
 
 Game::Game( MainWindow& wnd )
 	:
@@ -38,6 +39,11 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+    Vector2<float> vecf(25.5f, 30.f);
+    Vector2<int> veci(5, 5);
+    Vector2<double> vecd = vecf + Vector2<float>(veci);
+    vecd += veci * 100;
+    veci -= vecf;
 }
 
 void Game::ComposeFrame()
