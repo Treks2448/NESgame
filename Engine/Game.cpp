@@ -39,11 +39,9 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-    Vector2<float> vecf(25.5f, 30.f);
-    Vector2<int> veci(5, 5);
-    Vector2<double> vecd = vecf + Vector2<float>(veci);
-    vecd += veci * 100;
-    veci -= vecf;
+    Vector2<float> vec1 = { 3, 4 };
+    Vector2<float> vec2 = { 6, 20 };
+    float angle = Vector2<float>::AngleBetween(vec1, vec2);
 }
 
 void Game::ComposeFrame()
