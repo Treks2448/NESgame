@@ -99,6 +99,24 @@ public:
 		else return T(180) - theta;
 	}
 
+	// returns a vector going from lhs to rhs
+	static Vector2<T>& FromToVector(const Vector2<T>& lhs, const Vector2<T>& rhs)
+	{
+		return rhs - lhs;
+	}
+
+	// returns a vector going from (x1,y1) to (x2, y2)
+	static Vector2<T>& FromToVector(T x1, T y1, T x2, T y2)
+	{
+		return Vector2<T>(T(x2 - x1), T(y2- y1));
+	}
+
+	// returns distance between lhs and rhs
+	static T Dist(const Vector2<T>& lhs, const Vector2<T>& rhs)
+	{
+		return Vector2<T>::FromToVector(lhs, rhs).Magnitude();
+	}
+
 	// Getters ////////////////////////////////////////////
 	T GetX() const { return x; }
 	T GetY() const { return y; }
