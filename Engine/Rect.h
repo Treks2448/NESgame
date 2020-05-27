@@ -4,7 +4,7 @@ template<typename T>
 class Rect_
 {
 public:
-	Rect_(T left, T right, T top, T bottom) 
+	Rect_(T left, T right, T bottom, T top) 
 		: 
 		left((T)left), 
 		right((T)right), 
@@ -22,7 +22,7 @@ public:
 	// Checks if the rect contains the point
 	bool Contains(T x, T y)
 	{
-		if (x > left&& x < right && y > top&& y < bottom ) { return true; }
+		if (x >= left || x <= right || y >= top || y <= bottom ) { return true; }
 		else { return false; }
 	}
 

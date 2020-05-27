@@ -63,6 +63,15 @@
     <ClInclude Include="Rect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Surface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BMP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXErr.cpp">
@@ -90,6 +99,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="COMInitializer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Surface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BMP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
