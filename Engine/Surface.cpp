@@ -4,7 +4,6 @@ Surface::Surface(int sizeX, int sizeY, std::string filename)
 	:
 	drawRect(0, sizeX, 0, sizeY)
 {
-	std::ifstream in(filename);
 
 	int imageX;
 	int imageY;

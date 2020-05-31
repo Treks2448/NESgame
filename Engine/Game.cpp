@@ -26,7 +26,7 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-    bitmap("Shapes.bmp")
+    bitmap("test.bmp")
 {
 }
 
@@ -40,9 +40,10 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-    BMP bmp("Shapes.bmp");
+    
 }
 
 void Game::ComposeFrame()
 {
+    bitmap.print(gfx);
 }
