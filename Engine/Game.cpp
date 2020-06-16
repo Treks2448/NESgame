@@ -26,8 +26,9 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-    bitmap("test.bmp")
+	sprite(100, 100, 32, 32, IntRect(0, gfx.ScreenWidth, gfx.ScreenHeight, 0), "img.bmp")
 {
+	sprite.SetState(3);
 }
 
 void Game::Go()
@@ -40,10 +41,18 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-    
+	
+	if (animationTime >= 0.005f)
+	{
+		sprite.AdvanceFrame();
+		animationTime = 0.f;
+	}
+	animationTime += deltaTime;
 }
 
 void Game::ComposeFrame()
 {
-    bitmap.print(gfx);
+	last = std::chrono::steady_clock::now();
+	sprite.Draw(gfx, Colors::Magenta);
+	deltaTime = std::chrono::duration<float>(std::chrono::steady_clock::now() - last).count();
 }

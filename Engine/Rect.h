@@ -26,13 +26,9 @@ public:
 		else { return false; }
 	}
 
-	// Getters
-	T GetLeft() { return left; }
-	T GetRight() { return right; }
-	T GetTop() { return top; }
-	T GetBottom() { return bottom; }
+	T GetWidth() const { return right - left; }
+	T GetHeight() const { return bottom - top; }
 
-private:
 	T left;
 	T right;
 	T top;

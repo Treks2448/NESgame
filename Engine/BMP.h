@@ -1,18 +1,23 @@
 #pragma once
 #include <string>
 #include <Windows.h>
+#include "Colors.h"
 #include "Graphics.h"
 
 class BMP
 {
 public:
 	BMP(const std::string& filename);
-	~BMP();	
-	
-	BITMAPFILEHEADER bmpFileHeader;
-	BITMAPINFOHEADER bmpInfoHeader;	
+	BMP(const BMP& bmp) = delete; //TODO: implement copy constructor and copy assignment
+	~BMP();
 
-	void print(Graphics& gfx) const;
+	BITMAPFILEHEADER bmpFileHeader;
+	BITMAPINFOHEADER bmpInfoHeader;
+
+	Color GetPixelNoAlpha(int x, int y) const;
+	Color GetPixel(int x, int y) const;
+
+	void Print(Graphics& gfx, int x, int y);
 	
 private:
 	int bitDepth = bmpInfoHeader.biBitCount;

@@ -66,10 +66,10 @@
     <ClInclude Include="Triangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Surface.h">
+    <ClInclude Include="BMP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BMP.h">
+    <ClInclude Include="Sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -101,10 +101,10 @@
     <ClCompile Include="COMInitializer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Surface.cpp">
+    <ClCompile Include="BMP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BMP.cpp">
+    <ClCompile Include="Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

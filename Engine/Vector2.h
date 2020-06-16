@@ -111,11 +111,6 @@ public:
 		return Vector2_<T>::FromToVector(lhs, rhs).Magnitude();
 	}
 
-	// Getters ////////////////////////////////////////////
-	T GetX() const { return x; }
-	T GetY() const { return y; }
-
-private:
 	T x;
 	T y;
 };

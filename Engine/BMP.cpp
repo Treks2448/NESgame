@@ -53,16 +53,33 @@ BMP::~BMP()
 	image = nullptr;
 }
 
-void BMP::print(Graphics& gfx) const
+Color BMP::GetPixelNoAlpha(int x, int y) const
 {
-	for (int iy = 0; iy < height; iy++)
-	{
-		for (int ix = 0; ix < width; ix++)
-		{
-			int iPixel = bytesPerPixel * ix + iy * width * bytesPerPixel;
-			gfx.PutPixel(ix, iy, image[iPixel + 2], image[iPixel + 1], image[iPixel + 0]);
+	int rowStride = width * bytesPerPixel;
+	int i = x * bytesPerPixel + y * rowStride;
+	return Color(image[i+2], image[i+1], image[i+0]);
+}
 
-			// TODO: add alpha channel to the image 
+Color BMP::GetPixel(int x, int y) const
+{
+	int rowStride = width * bytesPerPixel;
+	int i = x * bytesPerPixel + y * rowStride;
+	//agbr
+	if (bytesPerPixel == 3) return Color(image[i + 2], image[i + 1], image[i + 0]);
+	else return Color(image[i+3], image[i+2], image[i+1], image[i+0]);
+}
+
+void BMP::Print(Graphics& gfx, int in_x, int in_y)
+{
+	for (int x = 0; x < width; x++)
+	{
+		for (int y = 0; y < height; y++)
+		{
+			int i = (y * width * bytesPerPixel) + x * bytesPerPixel;
+			Color c(image[i + 3], image[i + 2], image[i + 1], image[i + 0]);
+			gfx.PutPixel(in_x + x, in_y + y, c);
+
 		}
+
 	}
 }
