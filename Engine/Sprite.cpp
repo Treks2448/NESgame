@@ -1,8 +1,8 @@
 #include "Sprite.h"
 
-Sprite::Sprite(int init_x, int init_y, int width, int height, const IntRect& clipBounds, const char* filename)
+Sprite::Sprite(int width, int height, const IntRect& clipBounds, const char* filename, int frameTime)
 	:
-	pos(init_x, init_y),
+	frameTime(frameTime),
 	drawRect(0, width, height, 0),
 	clipBounds(clipBounds),
 	image(filename),
@@ -18,6 +18,11 @@ int Sprite::GetState() const
 	return currState;
 }
 
+int Sprite::GetFrameTime() const
+{
+	return frameTime;
+}
+
 void Sprite::AdvanceFrame()
 {
 	if (drawRectPos.x + drawRect.GetWidth() >= image.bmpInfoHeader.biWidth -1)
@@ -26,7 +31,7 @@ void Sprite::AdvanceFrame()
 		drawRectPos.x += drawRect.GetWidth();
 }
 
-void Sprite::Draw(Graphics& gfx, Color chromaKey) const
+void Sprite::Draw(int xPos, int yPos, Graphics& gfx, Color chromaKey) const
 {
 	for (int x = drawRectPos.x; x < drawRectPos.x + drawRect.GetWidth(); x++)
 	{
@@ -34,7 +39,7 @@ void Sprite::Draw(Graphics& gfx, Color chromaKey) const
 		{
 			Color pixel = image.GetPixel(x, y);
 			if (pixel.dword == chromaKey.dword) continue;
-			else gfx.PutPixel(pos.x + x - drawRectPos.x, pos.y + y - drawRectPos.y, pixel);
+			else gfx.PutPixel(xPos + x - drawRectPos.x, yPos + y - drawRectPos.y, pixel);
 		}
 		
 	}
@@ -45,4 +50,9 @@ void Sprite::SetState(int state)
 	if (state >= nStates) return;
 	currState = state;
 	drawRectPos.y = state * drawRect.GetWidth();
+}
+
+void Sprite::SetFrameTime(int ft)
+{
+	frameTime = ft;
 }

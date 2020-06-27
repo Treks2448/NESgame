@@ -8,25 +8,21 @@
 class Sprite
 {
 public:
-	Sprite(int init_x, int init_y, int width, int height, const IntRect& clipBounds, const char* filename);
-	
+	Sprite(int width, int height, const IntRect& clipBounds, const char* filename, int frameTime);
 	int GetState() const;
+	int GetFrameTime() const;
 	void SetState(int state);
-
-	// Advances the animation by one frame
+	void SetFrameTime(int ft);
 	void AdvanceFrame();
-	// Draws the sprite
-	void Draw(Graphics& gfx, Color chroma) const;
+	void Draw(int x, int y, Graphics& gfx, Color chroma) const;
 private:
-	Vector2 pos;
-
 	BMP image;
 	IntRect clipBounds;
 	IntRect drawRect;
 	IntVector2 drawRectPos;
-	
 	const int nFrames;
 	const int nStates;
 	int currState;
+	int frameTime;
 };
 

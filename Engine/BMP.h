@@ -8,17 +8,14 @@ class BMP
 {
 public:
 	BMP(const std::string& filename);
-	BMP(const BMP& bmp) = delete; //TODO: implement copy constructor and copy assignment
+	// TODO: implement rule of five
 	~BMP();
-
-	BITMAPFILEHEADER bmpFileHeader;
-	BITMAPINFOHEADER bmpInfoHeader;
-
+	void Print(Graphics& gfx, int x, int y);
 	Color GetPixelNoAlpha(int x, int y) const;
 	Color GetPixel(int x, int y) const;
-
-	void Print(Graphics& gfx, int x, int y);
-	
+public:
+	BITMAPFILEHEADER bmpFileHeader;
+	BITMAPINFOHEADER bmpInfoHeader;
 private:
 	int bitDepth = bmpInfoHeader.biBitCount;
 	int width = bmpInfoHeader.biWidth;
