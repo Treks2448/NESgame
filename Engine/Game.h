@@ -45,8 +45,5 @@ private:
 	/********************************/
 	/*  User Variables              */
 	Sprite sprite;
-	std::chrono::steady_clock::time_point last;
-	float deltaTime = 0;
-	float animationTime = 0;
 	/********************************/
 };
