@@ -15,7 +15,7 @@ public:
 	}
 
 	// Returns time passed since the program was started in seconds
-	float TimeSinceStart() 
+	float TimeSinceStart() const
 	{ 
 		return std::chrono::duration<float>(std::chrono::steady_clock::now() - startTime).count();
 	}

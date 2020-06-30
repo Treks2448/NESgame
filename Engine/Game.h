@@ -46,6 +46,7 @@ private:
 	/*  User Variables              */
 	Sprite sprite;
 	Time time;
+	Mouse m;
 	float animationTime = 0;
 	/********************************/
 };

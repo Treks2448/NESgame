@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite(int width, int height, const IntRect& clipBounds, const char* filename, int frameTime)
+Sprite::Sprite(int width, int height, const IntRect& clipBounds, const char* filename, float frameTime)
 	:
 	frameTime(frameTime),
 	drawRect(0, width, height, 0),
@@ -9,7 +9,8 @@ Sprite::Sprite(int width, int height, const IntRect& clipBounds, const char* fil
 	drawRectPos(0, 0),
 	nFrames(image.bmpInfoHeader.biWidth / width),
 	nStates(image.bmpInfoHeader.biHeight / height),
-	currState(0)
+	currState(0),
+	timer(0)
 {
 }
 
@@ -23,12 +24,19 @@ int Sprite::GetFrameTime() const
 	return frameTime;
 }
 
-void Sprite::AdvanceFrame()
+void Sprite::AdvanceFrame(float deltaTime)
 {
+	// increment timer
+	timer += deltaTime;
+	if (timer < frameTime) { return; }
+
+	// go to the next frame
 	if (drawRectPos.x + drawRect.GetWidth() >= image.bmpInfoHeader.biWidth -1)
 		drawRectPos.x = 0;
 	else
 		drawRectPos.x += drawRect.GetWidth();
+	
+	timer = 0;
 }
 
 void Sprite::Draw(int xPos, int yPos, Graphics& gfx, Color chromaKey) const

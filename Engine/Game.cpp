@@ -26,7 +26,7 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	sprite(32, 32, IntRect(0, Graphics::ScreenWidth, Graphics::ScreenHeight, 0), "img.bmp", 0.005f),
+	sprite(32, 32, IntRect(0, Graphics::ScreenWidth, Graphics::ScreenHeight, 0), "img.bmp", 0.1f),
 	animationTime(0)
 {
 	sprite.SetState(3);
@@ -43,15 +43,10 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	time.Mark();
-	if (animationTime >= 1.0f)
-	{
-		sprite.AdvanceFrame();
-		animationTime = 0.f;
-	}
-	animationTime += time.DeltaTime();
+	sprite.AdvanceFrame(time.DeltaTime());
 }
 
 void Game::ComposeFrame()
 {
-	sprite.Draw(100, 100, gfx, Colors::Magenta);
+	sprite.Draw(-20, 20, gfx, Colors::Magenta);
 }
