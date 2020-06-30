@@ -45,9 +45,16 @@ void Sprite::Draw(int xPos, int yPos, Graphics& gfx, Color chromaKey) const
 	{
 		for (int y = drawRectPos.y; y < drawRectPos.y + drawRect.GetHeight(); y++)
 		{
+			// Check whether pixel is within draw bounds
+			int drawX = xPos + x - drawRectPos.x;
+			int drawY = yPos + y - drawRectPos.y;
+ 			if (!clipBounds.Contains(drawX, drawY)) continue;
+			
+			// Check whether the pixel isn't same colour as chroma
 			Color pixel = image.GetPixel(x, y);
 			if (pixel.dword == chromaKey.dword) continue;
-			else gfx.PutPixel(xPos + x - drawRectPos.x, yPos + y - drawRectPos.y, pixel);
+			
+			gfx.PutPixel(drawX, drawY, pixel);
 		}
 		
 	}

@@ -48,5 +48,5 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	sprite.Draw(-20, 20, gfx, Colors::Magenta);
+	sprite.Draw(-10, -10, gfx, Colors::Magenta);
 }

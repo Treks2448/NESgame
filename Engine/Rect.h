@@ -20,10 +20,9 @@ public:
 	{}
 
 	// Checks if the rect contains the point
-	bool Contains(T x, T y)
+	bool Contains(T x, T y) const
 	{
-		if (x >= left || x <= right || y >= top || y <= bottom ) { return true; }
-		else { return false; }
+		return (x >= left && x < right && y >= top && y < bottom);
 	}
 
 	T GetWidth() const { return right - left; }
