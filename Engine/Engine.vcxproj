@@ -152,6 +152,7 @@
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SoundEffect.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Time.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>

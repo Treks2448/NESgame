@@ -24,7 +24,7 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "Sprite.h"
-#include <chrono>
+#include "Time.h"
 
 class Game
 {
@@ -45,5 +45,7 @@ private:
 	/********************************/
 	/*  User Variables              */
 	Sprite sprite;
+	Time time;
+	float animationTime = 0;
 	/********************************/
 };
