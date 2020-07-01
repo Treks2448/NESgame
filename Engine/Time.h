@@ -4,7 +4,7 @@
 class Time
 {
 public:
-	// Returns the duration of the last frame in seconds
+	// Returns duration, in seconds, between consecutive calls of Mark() 
 	float DeltaTime() const { return deltaTime; } 
 
 	// Measures time since it was last called and sets it to DeltaTime() return value;

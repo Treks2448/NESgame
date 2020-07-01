@@ -46,7 +46,9 @@ private:
 	/*  User Variables              */
 	Sprite sprite;
 	Time time;
-	Mouse m;
+	Mouse mouse;
+	Keyboard keyboard;
+	IntVector2 pos = { 20, 20 };
 	float animationTime = 0;
 	/********************************/
 };

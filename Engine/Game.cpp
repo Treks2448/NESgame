@@ -42,11 +42,41 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	if (wnd.kbd.KeyIsPressed('A'))
+	{
+		sprite.SetFrameTime(0.1f);
+		sprite.SetState(0);
+		pos.x -= 2;
+	}
+	else if (wnd.kbd.KeyIsPressed('D'))
+	{
+		sprite.SetFrameTime(0.1f);
+		sprite.SetState(1);
+		pos.x += 2;
+	}
+	else if (wnd.kbd.KeyIsPressed('W')) 
+	{
+		sprite.SetFrameTime(0.1f);
+		sprite.SetState(2);
+		pos.y -= 2;
+	}
+	else if (wnd.kbd.KeyIsPressed('S'))
+	{
+		sprite.SetFrameTime(0.1f);
+		sprite.SetState(3);
+		pos.y += 2;
+	}
+	else
+	{
+		sprite.SetFrame(0);
+		sprite.SetFrameTime(100000000000.f);
+	}
+
 	time.Mark();
 	sprite.AdvanceFrame(time.DeltaTime());
 }
 
 void Game::ComposeFrame()
 {
-	sprite.Draw(-10, -10, gfx, Colors::Magenta);
+	sprite.Draw(pos.x, pos.y, gfx, Colors::Magenta);
 }

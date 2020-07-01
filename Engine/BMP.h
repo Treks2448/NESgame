@@ -8,7 +8,11 @@ class BMP
 {
 public:
 	BMP(const std::string& filename);
-	// TODO: implement rule of five
+	// TODO: implement these constructors (rule of 5)
+	BMP(const BMP& bitmap);
+	BMP(BMP&& bitmap);
+	BMP();
+	// ***
 	~BMP();
 	void Print(Graphics& gfx, int x, int y);
 	Color GetPixelNoAlpha(int x, int y) const;

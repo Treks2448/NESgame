@@ -12,7 +12,8 @@ public:
 	int GetState() const;
 	int GetFrameTime() const;
 	void SetState(int state);
-	void SetFrameTime(int ft);
+	void SetFrame(int frame);
+	void SetFrameTime(float ft);
 	// Advances the animation of the sprite by one frame
 	void AdvanceFrame(float deltaTime);
 	// Draws the sprite at position (x, y) with specified colour as chroma key

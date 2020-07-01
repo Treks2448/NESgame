@@ -1,4 +1,5 @@
 #include "Sprite.h"
+#include <fstream>
 
 Sprite::Sprite(int width, int height, const IntRect& clipBounds, const char* filename, float frameTime)
 	:
@@ -29,6 +30,7 @@ void Sprite::AdvanceFrame(float deltaTime)
 	// increment timer
 	timer += deltaTime;
 	if (timer < frameTime) { return; }
+	else timer = 0.f;
 
 	// go to the next frame
 	if (drawRectPos.x + drawRect.GetWidth() >= image.bmpInfoHeader.biWidth -1)
@@ -36,7 +38,14 @@ void Sprite::AdvanceFrame(float deltaTime)
 	else
 		drawRectPos.x += drawRect.GetWidth();
 	
-	timer = 0;
+}
+
+void Sprite::SetFrame(int frame)
+{
+	// Verify that correct frame is input
+	if (frame > nFrames) throw std::runtime_error("The requested frame is larger than the total number of frames.");
+
+	drawRectPos.x = frame * drawRect.GetWidth();
 }
 
 void Sprite::Draw(int xPos, int yPos, Graphics& gfx, Color chromaKey) const
@@ -67,7 +76,7 @@ void Sprite::SetState(int state)
 	drawRectPos.y = state * drawRect.GetWidth();
 }
 
-void Sprite::SetFrameTime(int ft)
+void Sprite::SetFrameTime(float ft)
 {
 	frameTime = ft;
 }
