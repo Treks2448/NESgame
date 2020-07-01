@@ -65,7 +65,6 @@ void Sprite::Draw(int xPos, int yPos, Graphics& gfx, Color chromaKey) const
 			
 			gfx.PutPixel(drawX, drawY, pixel);
 		}
-		
 	}
 }
 
