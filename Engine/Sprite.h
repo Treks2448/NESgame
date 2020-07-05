@@ -17,7 +17,7 @@ public:
 	// Advances the animation of the sprite by one frame
 	void AdvanceFrame(float deltaTime);
 	// Draws the sprite at position (x, y) with specified colour as chroma key
-	void Draw(int x, int y, Graphics& gfx, Color chroma) const;
+	void Draw(int x, int y, Graphics& gfx, const Color& chroma) const;
 private:
 	BMP image;
 	IntRect clipBounds;

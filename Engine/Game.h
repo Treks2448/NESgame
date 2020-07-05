@@ -25,6 +25,9 @@
 #include "Graphics.h"
 #include "Sprite.h"
 #include "Time.h"
+#include "Grid.h"
+#include "Tile.h"
+#include <vector>
 
 class Game
 {
@@ -45,9 +48,10 @@ private:
 	/********************************/
 	/*  User Variables              */
 	Sprite sprite;
+	Sprite grassSprite;
 	Time time;
-	Mouse mouse;
-	Keyboard keyboard;
+	std::vector<Tile> grassTiles;
+	Grid grid;
 	IntVector2 pos = { 20, 20 };
 	float animationTime = 0;
 	/********************************/

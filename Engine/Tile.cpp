@@ -1,7 +1,7 @@
 #include "Tile.h"
 
 
-Tile::Tile(IntVector2 scenePos, int sideLength, Sprite& sprite)
+Tile::Tile(const IntVector2& scenePos, int sideLength, Sprite& sprite)
 	:
 	scenePos(scenePos),
 	bounds(0, sideLength, sideLength, 0),
@@ -19,8 +19,8 @@ IntRect Tile::GetBounds() const
 	return bounds;
 }
 
-void Tile::Draw(int x, int y)
+void Tile::Draw(int x, int y, Graphics& gfx, const Color& c)
 {
-	sprite->Draw(x, y);
+	sprite->Draw(x, y, gfx, c);
 }
 

@@ -27,9 +27,19 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	sprite(32, 32, IntRect(0, Graphics::ScreenWidth, Graphics::ScreenHeight, 0), "img.bmp", 0.1f),
-	animationTime(0)
+	animationTime(0),
+	grid({0,0}, 32),
+	grassSprite(32, 32, IntRect(0, Graphics::ScreenWidth, Graphics::ScreenHeight, 0), "grass.bmp", 0.3f)
 {
 	sprite.SetState(3);
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			IntVector2 pos = grid.FitToGrid({ i * 32, j * 32 });
+			grassTiles.push_back({ pos, 32, grassSprite });
+		}
+	}
 }
 
 void Game::Go()
@@ -78,5 +88,10 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	for (auto i = grassTiles.begin(); i < grassTiles.end(); i++)
+	{
+		auto pos = i->GetScenePos();
+		i->Draw(pos.x, pos.y, gfx, Colors::Magenta);
+	}
 	sprite.Draw(pos.x, pos.y, gfx, Colors::Magenta);
 }

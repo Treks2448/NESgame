@@ -48,7 +48,7 @@ void Sprite::SetFrame(int frame)
 	drawRectPos.x = frame * drawRect.GetWidth();
 }
 
-void Sprite::Draw(int xPos, int yPos, Graphics& gfx, Color chromaKey) const
+void Sprite::Draw(int xPos, int yPos, Graphics& gfx, const Color& chromaKey) const
 {
 	for (int x = drawRectPos.x; x < drawRectPos.x + drawRect.GetWidth(); x++)
 	{
