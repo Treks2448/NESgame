@@ -45,12 +45,29 @@ BMP::BMP(const std::string& filename)
 		in.read(reinterpret_cast<char*>(image + curPos), rowStride);
 		in.seekg(padding, in.cur); // not necessary for 32 bit image
 	}
+
+	pixels = new Color[width * height];
+
+	for (int ix = 0; ix < width; ix++)
+	{
+		for (int iy = 0; iy < height; iy++)
+		{
+			int rowStride = width * bytesPerPixel;
+			int i = ix * bytesPerPixel + iy * rowStride;
+			//agbr
+			Color c;
+			if (bytesPerPixel == 3) pixels[ix + iy * width] = Color(image[i + 2], image[i + 1], image[i + 0]);
+			else pixels[ix + iy * width] = Color(image[i + 3], image[i + 2], image[i + 1], image[i + 0]);
+		}
+	}
 }
 
 BMP::~BMP()
 {
 	delete[] image;
 	image = nullptr;
+	delete[] pixels;
+	pixels = nullptr;
 }
 
 Color BMP::GetPixelNoAlpha(int x, int y) const
@@ -60,13 +77,16 @@ Color BMP::GetPixelNoAlpha(int x, int y) const
 	return Color(image[i+2], image[i+1], image[i+0]);
 }
 
-Color BMP::GetPixel(int x, int y) const
+Color& BMP::GetPixel(int x, int y) const
 {
+	/*
 	int rowStride = width * bytesPerPixel;
 	int i = x * bytesPerPixel + y * rowStride;
 	//agbr
 	if (bytesPerPixel == 3) return Color(image[i + 2], image[i + 1], image[i + 0]);
 	else return Color(image[i+3], image[i+2], image[i+1], image[i+0]);
+	*/
+	return pixels[x + y * width];
 }
 
 void BMP::Print(Graphics& gfx, int in_x, int in_y)

@@ -60,10 +60,9 @@ void Sprite::Draw(int xPos, int yPos, Graphics& gfx, const Color& chromaKey) con
  			if (!clipBounds.Contains(drawX, drawY)) continue;
 			
 			// Check whether the pixel isn't same colour as chroma
-			Color pixel = image.GetPixel(x, y);
-			if (pixel.dword == chromaKey.dword) continue;
+			if (image.GetPixel(x,y).dword == chromaKey.dword) continue;
 			
-			gfx.PutPixel(drawX, drawY, pixel);
+			gfx.PutPixel(drawX, drawY, image.GetPixel(x, y));
 		}
 	}
 }

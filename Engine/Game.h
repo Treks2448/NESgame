@@ -52,7 +52,7 @@ private:
 	Time time;
 	std::vector<Tile> grassTiles;
 	Grid grid;
-	IntVector2 pos = { 20, 20 };
+	Vector2 pos = { 20.f, 20.f };
 	float animationTime = 0;
 	/********************************/
 };

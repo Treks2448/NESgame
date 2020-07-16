@@ -16,7 +16,7 @@ public:
 	~BMP();
 	void Print(Graphics& gfx, int x, int y);
 	Color GetPixelNoAlpha(int x, int y) const;
-	Color GetPixel(int x, int y) const;
+	Color& GetPixel(int x, int y) const;
 public:
 	BITMAPFILEHEADER bmpFileHeader;
 	BITMAPINFOHEADER bmpInfoHeader;
@@ -26,5 +26,6 @@ private:
 	int height = bmpInfoHeader.biHeight;
 	int bytesPerPixel = bitDepth / 8;
 	unsigned char* image = nullptr;
+	Color* pixels = nullptr;
 };
 

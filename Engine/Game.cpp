@@ -32,9 +32,9 @@ Game::Game( MainWindow& wnd )
 	grassSprite(32, 32, IntRect(0, Graphics::ScreenWidth, Graphics::ScreenHeight, 0), "grass.bmp", 0.3f)
 {
 	sprite.SetState(3);
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	{
-		for (int j = 0; j < 10; j++)
+		for (int j = 0; j < 20; j++)
 		{
 			IntVector2 pos = grid.FitToGrid({ i * 32, j * 32 });
 			grassTiles.push_back({ pos, 32, grassSprite });
@@ -56,25 +56,25 @@ void Game::UpdateModel()
 	{
 		sprite.SetFrameTime(0.1f);
 		sprite.SetState(0);
-		pos.x -= 2;
+		pos.x -= 100 * time.DeltaTime();
 	}
 	else if (wnd.kbd.KeyIsPressed('D'))
 	{
 		sprite.SetFrameTime(0.1f);
 		sprite.SetState(1);
-		pos.x += 2;
+		pos.x += 100 * time.DeltaTime();
 	}
 	else if (wnd.kbd.KeyIsPressed('W')) 
 	{
 		sprite.SetFrameTime(0.1f);
 		sprite.SetState(2);
-		pos.y -= 2;
+		pos.y -= 100 * time.DeltaTime();
 	}
 	else if (wnd.kbd.KeyIsPressed('S'))
 	{
 		sprite.SetFrameTime(0.1f);
 		sprite.SetState(3);
-		pos.y += 2;
+		pos.y += 100 * time.DeltaTime();
 	}
 	else
 	{
